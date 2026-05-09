@@ -1,828 +1,269 @@
-# \# TrollEngine
+<div align="center">
 
-# 
+# 🧟‍♂️ TrollEngine
 
-# Advanced Minecraft trolling and event automation engine for Paper/Spigot servers.
+**Advanced Minecraft trolling and event automation engine for Paper/Spigot servers.**
 
-# 
+[![Java](https://img.shields.io/badge/Java-21+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.20%20%7C%201.21-1FCB4A?style=for-the-badge&logo=minecraft&logoColor=white)](https://minecraft.net/)
+[![Paper](https://img.shields.io/badge/Paper-Supported-black?style=for-the-badge)](https://papermc.io/)
+[![Spigot](https://img.shields.io/badge/Spigot-Supported-orange?style=for-the-badge)](https://www.spigotmc.org/)
+[![Purpur](https://img.shields.io/badge/Purpur-Supported-blue?style=for-the-badge)](https://purpurmc.org/)
+<br>
+[![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)](#)
+[![Releases](https://img.shields.io/badge/Releases-Download-blueviolet?style=for-the-badge)](https://github.com/Kartik-Fulara/Troll-Engine/releases)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
 
-# TrollEngine provides:
+</div>
 
-# 
+---
 
-# \* real-time troll command execution
+## 📖 Overview
 
-# \* embedded HTTP → RCON bridge
+TrollEngine provides real-time troll command execution, an embedded HTTP to RCON bridge, advanced death tracking, viewer attribution, troll mob/effect tracking, cascade kill systems, and live command execution.
 
-# \* advanced death tracking
+Everything operates on a fully embedded Java infrastructure.
+* No Python.
+* No Docker.
+* No external bridge process.
 
-# \* viewer attribution
+Everything runs directly inside the plugin.
 
-# \* troll mob/effect tracking
+---
 
-# \* cascade kill systems
+## ✨ Features
 
-# \* live command execution
+### 🔌 Embedded HTTP Bridge
 
-# \* fully embedded Java infrastructure
+TrollEngine includes a fully embedded Java HTTP bridge. The plugin exposes its own API directly from inside the Minecraft server and forwards commands internally through RCON.
 
-# 
+**Supported endpoints:**
+* `POST /`
+* `POST /rcon`
+* `POST /cmd`
+* `GET /health`
 
-# No Python.
+**Bridge Features:**
+* multi-threaded HTTP server
+* request authentication
+* automatic heartbeat monitoring
+* graceful restart support
+* zero external dependencies
+* no Docker or Python required
 
-# No Docker.
+---
 
-# No external bridge process.
+### 💀 Advanced Death Tracking
 
-# 
+Tracks and classifies every player death.
 
-# Everything runs directly inside the plugin.
+**Supported death types:**
+* natural deaths
+* command deaths
+* plugin-forced deaths
+* troll mob kills
+* troll effect kills
+* void deaths
+* cascade deaths
 
-# 
+**Every death event includes:**
+* player
+* cause
+* executor
+* timestamp
+* attribution source
+* death type
 
-# \---
+---
 
-# 
+### 👁️ Viewer Attribution System
 
-# \# Features
+TrollEngine automatically attributes troll actions to the correct user/viewer.
 
-# 
+**Supported attribution systems:**
+* `/kill`
+* spawned mobs
+* potion effects
+* forced deaths
+* chained events
+* cascade kills
 
-# \## Embedded HTTP Bridge
+**Example Output:**
+* viewer123 spawned a zombie
+* viewer123 applied poison
+* viewer123 triggered a cascade
 
-# 
+---
 
-# TrollEngine includes a fully embedded Java HTTP bridge.
+### 🧟 Troll Mob Tracking
 
-# 
+Every mob spawned during an active troll event is tagged automatically.
 
-# The plugin exposes its own API directly from inside the Minecraft server and forwards commands internally through RCON.
+**Supported:**
+* zombies
+* skeletons
+* creepers
+* custom entities
+* summoned mobs
+* projectile attribution
 
-# 
+**If a tagged mob kills a player:**
+* the kill is attributed correctly
+* custom death messages are generated
+* statistics are updated automatically
 
-# Supported endpoints:
+---
 
-# 
+### 🧪 Troll Effect Tracking
 
-# ```http
+Tracks lethal effects applied during troll events.
 
-# POST /
+**Supported effects:**
+* poison
+* wither
+* instant damage
+* void-related deaths
 
-# POST /rcon
+The plugin preserves attribution even when deaths occur later.
 
-# POST /cmd
+---
 
-# GET  /health
+### 💥 Cascade Death System
 
-# ```
+**When a tracked death occurs:**
+* global broadcasts can trigger
+* titles/subtitles can display
+* chain reactions can execute
+* other players can be affected automatically
 
-# 
+**Includes:**
+* cascade protection
+* duplicate prevention
+* configurable delay system
+* root death tracking
 
-# Features:
+---
 
-# 
+### ⌨️ Internal Command System
 
-# \* multi-threaded HTTP server
+Built-in commands for troll execution, bridge management, stats, viewer attribution, and runtime reloads.
 
-# \* request authentication
+**Commands:**
+* `/trollspawn`
+* `/trollsetuser`
+* `/trollstats`
+* `/trollreloadbridge`
+* `/trollfetchmsgs`
 
-# \* automatic heartbeat monitoring
+---
 
-# \* graceful restart support
+### ⚙️ Embedded RCON Client
 
-# \* zero external dependencies
+Includes a fully embedded thread-safe RCON client implementation. No external RCON libraries required.
 
-# \* no Docker or Python required
+**Features:**
+* atomic command batches
+* automatic authentication
+* connection isolation
+* request locking
+* timeout handling
+* concurrent request safety
 
-# 
+---
 
-# \---
+### 🚀 Performance & Architecture
 
-# 
+Designed for production environments, TrollEngine is built entirely in Java. No external runtime required.
 
-# \# Advanced Death Tracking
+**Performance Features:**
+* concurrent-safe systems
+* async persistence
+* lightweight HTTP server
+* lock-safe RCON execution
+* low memory overhead
+* automatic cleanup systems
 
-# 
+**Core Systems:**
+* embedded HTTP server
+* RCON bridge
+* death tracking engine
+* effect attribution system
+* entity tracking system
+* command attribution tracker
+* statistics manager
 
-# Tracks and classifies every player death.
+---
 
-# 
+## 📦 Setup & Installation
 
-# Supported death types:
+### Requirements
+* Java 21+
+* Paper / Spigot / Purpur
+* Minecraft 1.20+
+* RCON enabled
 
-# 
+### 1. Install Plugin
+Place `TrollEngine.jar` inside the `/plugins/` directory.
 
-# \* natural deaths
+### 2. Enable RCON
+Inside `server.properties`, ensure the following are set:
+* `enable-rcon=true`
+* `rcon.port=25575`
+* `rcon.password=CHANGE_ME`
 
-# \* command deaths
+### 3. Configure Bridge
+Edit `plugins/TrollEngine/config.yml`.
+Configure the bridge to be enabled, set the bind port (e.g., `8880`), set your `secret-token`, and match the RCON host, port, and password to your server properties. 
 
-# \* plugin-forced deaths
+---
 
-# \* troll mob kills
+## 💻 API Usage
 
-# \* troll effect kills
+Execute commands by sending a JSON payload via POST to `http://SERVER_IP:8880/rcon`, including your `X-Token` header.
+Health checks can be performed via GET request to `http://SERVER_IP:8880/health`.
 
-# \* void deaths
+---
 
-# \* cascade deaths
+## 📊 Statistics
 
-# 
+The built-in statistics system tracks global deaths, per-player deaths, troll kills, natural deaths, command kills, and cascade events.
+Access this via the `/trollstats` command.
 
-# Every death event includes:
+---
 
-# 
+## 🛡️ Security
 
-# \* player
+Never expose raw RCON publicly. 
+Recommended production setup:
+* firewall protected bridge
+* reverse proxy
+* secure token configuration
+* localhost RCON binding
+* restricted port access
 
-# \* cause
+---
 
-# \* executor
+## ⬇️ Releases & Compatibility
 
-# \* timestamp
+**Supported Servers:** Paper, Spigot, Purpur.
+**Supported Versions:** 1.20.x, 1.21.x.
 
-# \* attribution source
+This repository contains compiled binaries, release assets, changelogs, and update manifests. The full source code is private.
 
-# \* death type
+**Downloads:**
+* Latest Release: `https://github.com/Kartik-Fulara/Troll-Engine/releases/latest`
+* Latest API: `https://api.github.com/repos/Kartik-Fulara/Troll-Engine/releases/latest`
 
-# 
+**Release Assets Include:**
+* `TrollEngine.jar`
+* `manifest.json`
+* `TrollEngine.jar.sha256`
 
-# \---
+---
 
-# 
+## 📄 License
 
-# \# Viewer Attribution System
+Binary distribution only. 
+Source code is private and not included in this repository.
 
-# 
-
-# TrollEngine automatically attributes troll actions to the correct user/viewer.
-
-# 
-
-# Supported attribution systems:
-
-# 
-
-# \* `/kill`
-
-# \* spawned mobs
-
-# \* potion effects
-
-# \* forced deaths
-
-# \* chained events
-
-# \* cascade kills
-
-# 
-
-# Example:
-
-# 
-
-# ```txt
-
-# viewer123 spawned a zombie
-
-# viewer123 applied poison
-
-# viewer123 triggered a cascade
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# Troll Mob Tracking
-
-# 
-
-# Every mob spawned during an active troll event is tagged automatically.
-
-# 
-
-# Supported:
-
-# 
-
-# \* zombies
-
-# \* skeletons
-
-# \* creepers
-
-# \* custom entities
-
-# \* summoned mobs
-
-# \* projectile attribution
-
-# 
-
-# If a tagged mob kills a player:
-
-# 
-
-# \* the kill is attributed correctly
-
-# \* custom death messages are generated
-
-# \* statistics are updated automatically
-
-# 
-
-# \---
-
-# 
-
-# \# Troll Effect Tracking
-
-# 
-
-# Tracks lethal effects applied during troll events.
-
-# 
-
-# Supported effects:
-
-# 
-
-# \* poison
-
-# \* wither
-
-# \* instant damage
-
-# \* void-related deaths
-
-# 
-
-# The plugin preserves attribution even when deaths occur later.
-
-# 
-
-# \---
-
-# 
-
-# \# Cascade Death System
-
-# 
-
-# When a tracked death occurs:
-
-# 
-
-# \* global broadcasts can trigger
-
-# \* titles/subtitles can display
-
-# \* chain reactions can execute
-
-# \* other players can be affected automatically
-
-# 
-
-# Includes:
-
-# 
-
-# \* cascade protection
-
-# \* duplicate prevention
-
-# \* configurable delay system
-
-# \* root death tracking
-
-# 
-
-# \---
-
-# 
-
-# \# Internal Command System
-
-# 
-
-# Built-in commands for:
-
-# 
-
-# \* troll execution
-
-# \* bridge management
-
-# \* stats
-
-# \* viewer attribution
-
-# \* runtime reloads
-
-# 
-
-# Commands:
-
-# 
-
-# ```txt
-
-# /trollspawn
-
-# /trollsetuser
-
-# /trollstats
-
-# /trollreloadbridge
-
-# /trollfetchmsgs
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# Embedded RCON Client
-
-# 
-
-# Includes a fully embedded thread-safe RCON client implementation.
-
-# 
-
-# Features:
-
-# 
-
-# \* atomic command batches
-
-# \* automatic authentication
-
-# \* connection isolation
-
-# \* request locking
-
-# \* timeout handling
-
-# \* concurrent request safety
-
-# 
-
-# No external RCON libraries required.
-
-# 
-
-# \---
-
-# 
-
-# \# Performance
-
-# 
-
-# Designed for production environments.
-
-# 
-
-# Features:
-
-# 
-
-# \* concurrent-safe systems
-
-# \* async persistence
-
-# \* lightweight HTTP server
-
-# \* lock-safe RCON execution
-
-# \* low memory overhead
-
-# \* automatic cleanup systems
-
-# 
-
-# \---
-
-# 
-
-# \# Architecture
-
-# 
-
-# TrollEngine is built entirely in Java.
-
-# 
-
-# Core systems:
-
-# 
-
-# \* embedded HTTP server
-
-# \* RCON bridge
-
-# \* death tracking engine
-
-# \* effect attribution system
-
-# \* entity tracking system
-
-# \* command attribution tracker
-
-# \* statistics manager
-
-# 
-
-# No external runtime required.
-
-# 
-
-# \---
-
-# 
-
-# \# Installation
-
-# 
-
-# \## Requirements
-
-# 
-
-# \* Java 21+
-
-# \* Paper / Spigot / Purpur
-
-# \* Minecraft 1.20+
-
-# \* RCON enabled
-
-# 
-
-# \---
-
-# 
-
-# \# Setup
-
-# 
-
-# \## 1. Install Plugin
-
-# 
-
-# Place:
-
-# 
-
-# ```txt
-
-# TrollEngine.jar
-
-# ```
-
-# 
-
-# inside:
-
-# 
-
-# ```txt
-
-# /plugins/
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 2. Enable RCON
-
-# 
-
-# Inside `server.properties`:
-
-# 
-
-# ```properties
-
-# enable-rcon=true
-
-# rcon.port=25575
-
-# rcon.password=CHANGE\_ME
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 3. Configure Bridge
-
-# 
-
-# Edit:
-
-# 
-
-# ```txt
-
-# plugins/TrollEngine/config.yml
-
-# ```
-
-# 
-
-# Example:
-
-# 
-
-# ```yaml
-
-# bridge:
-
-# &#x20; enabled: true
-
-# 
-
-# &#x20; bind-host: ""
-
-# &#x20; port: 8880
-
-# 
-
-# &#x20; secret-token: "CHANGE\_ME"
-
-# 
-
-# &#x20; rcon-host: "127.0.0.1"
-
-# &#x20; rcon-port: 25575
-
-# &#x20; rcon-password: "CHANGE\_ME"
-
-# 
-
-# &#x20; rcon-timeout-ms: 5000
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# API Usage
-
-# 
-
-# Execute commands:
-
-# 
-
-# ```bash
-
-# curl -X POST http://SERVER\_IP:8880/rcon \\
-
-# &#x20; -H "Content-Type: application/json" \\
-
-# &#x20; -H "X-Token: YOUR\_SECRET" \\
-
-# &#x20; -d '{
-
-# &#x20;   "commands": \[
-
-# &#x20;     "say hello world"
-
-# &#x20;   ]
-
-# &#x20; }'
-
-# ```
-
-# 
-
-# Health check:
-
-# 
-
-# ```bash
-
-# curl http://SERVER\_IP:8880/health
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# Statistics
-
-# 
-
-# Built-in death statistics system.
-
-# 
-
-# Tracks:
-
-# 
-
-# \* global deaths
-
-# \* per-player deaths
-
-# \* troll kills
-
-# \* natural deaths
-
-# \* command kills
-
-# \* cascade events
-
-# 
-
-# Use:
-
-# 
-
-# ```txt
-
-# /trollstats
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# Security
-
-# 
-
-# Recommended production setup:
-
-# 
-
-# \* firewall protected bridge
-
-# \* reverse proxy
-
-# \* secure token configuration
-
-# \* localhost RCON binding
-
-# \* restricted port access
-
-# 
-
-# Never expose raw RCON publicly.
-
-# 
-
-# \---
-
-# 
-
-# \# Compatibility
-
-# 
-
-# Supported servers:
-
-# 
-
-# \* Paper
-
-# \* Spigot
-
-# \* Purpur
-
-# 
-
-# Supported versions:
-
-# 
-
-# \* 1.20.x
-
-# \* 1.21.x
-
-# 
-
-# \---
-
-# 
-
-# \# Releases
-
-# 
-
-# This repository contains:
-
-# 
-
-# \* compiled binaries
-
-# \* release assets
-
-# \* changelogs
-
-# \* update manifests
-
-# 
-
-# The full source code is private.
-
-# 
-
-# \---
-
-# 
-
-# \# Download
-
-# 
-
-# Latest release:
-
-# 
-
-# ```txt
-
-# https://github.com/Kartik-Fulara/Troll-Engine/releases/latest
-
-# ```
-
-# 
-
-# Latest API:
-
-# 
-
-# ```txt
-
-# https://api.github.com/repos/Kartik-Fulara/Troll-Engine/releases/latest
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# Release Assets
-
-# 
-
-# Each release includes:
-
-# 
-
-# ```txt
-
-# TrollEngine.jar
-
-# manifest.json
-
-# TrollEngine.jar.sha256
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \# License
-
-# 
-
-# Binary distribution only.
-
-# 
-
-# Source code is private and not included in this repository.
-
-
-
+For full terms and conditions, please refer to the included **[LICENSE](LICENSE)** file.
