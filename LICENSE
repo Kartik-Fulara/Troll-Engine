@@ -9,3 +9,81 @@ All rights reserved.
 This repository contains compiled binary distributions of TrollEngine.
 
 The TrollEngine source code is private and proprietary and is not included in this repository.
+
+---
+
+# Permission
+
+Permission is granted to:
+
+* download releases
+* use the plugin on personal or commercial Minecraft servers
+* configure and operate the plugin
+* create server-side integrations using the documented API
+
+---
+
+# Restrictions
+
+You may NOT:
+
+* redistribute the plugin binaries
+* reupload releases
+* sell the plugin
+* sublicense the plugin
+* reverse engineer the plugin
+* decompile the plugin
+* modify the plugin binaries
+* create derivative works
+* remove copyright notices
+* impersonate the official project
+* publish modified versions
+
+unless explicit written permission is granted by the copyright holder.
+
+---
+
+# Source Code
+
+The source code for TrollEngine is private and proprietary.
+
+Access to this repository or its releases does NOT grant access to:
+
+* source code
+* internal infrastructure
+* build systems
+* development tooling
+* private services
+
+---
+
+# Warranty
+
+The software is provided "AS IS", without warranty of any kind, express or implied, including but not limited to:
+
+* merchantability
+* fitness for a particular purpose
+* noninfringement
+
+The authors shall not be liable for:
+
+* damages
+* data loss
+* server issues
+* downtime
+* security incidents
+* indirect or consequential damages
+
+arising from the use of the software.
+
+---
+
+# Termination
+
+Violation of this license automatically terminates your right to use the software.
+
+---
+
+# Contact
+
+For licensing inquiries or commercial permissions, contact the repository owner.
